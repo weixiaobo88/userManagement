@@ -11,13 +11,13 @@ dependencies {
     compile 'org.hibernate:hibernate-core:4.3.5.Final'
     compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
     // tag::jetty[]
-    compile("org.springframework.boot:spring-boot-starter-web") {
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-jetty:1.1.4.RELEASE")
     // end::jetty[]
     // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.1.4.RELEASE")
     // end::actuator[]
 }
 
