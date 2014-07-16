@@ -1,0 +1,9 @@
+apply plugin: 'jetty'
+
+dependencies {
+    compile project(':core')
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    providedCompile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+}
+
+

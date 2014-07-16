@@ -1,0 +1,48 @@
+apply plugin: 'flyway'
+apply plugin: 'spring-boot'
+
+configurations {
+    mysql
+    compile { extendsFrom mysql }
+}
+
+dependencies {
+    compile 'org.springframework:spring-context:4.0.6.RELEASE'
+    compile 'org.hibernate:hibernate-core:4.3.5.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'mysql:mysql-connector-java:5.1.31'
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.0'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")
+    }
+}
+
+jar {
+    baseName = 'user-management'
+    version =  '0.1.0'
+}
+
+
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/user_management'
+    user = 'root'
+}
+
+
