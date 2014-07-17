@@ -1,9 +1,39 @@
 apply plugin: 'jetty'
+apply plugin: 'spring-boot'
 
 dependencies {
     compile project(':core')
     providedCompile 'javax.servlet:servlet-api:2.5'
     providedCompile 'org.springframework:spring-webmvc:4.0.6.RELEASE'
+
+
+
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.4.RELEASE") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty:1.1.4.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.1.4.RELEASE")
+
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")
+    }
+}
+
+jar {
+    baseName = 'user-management'
+    version =  '0.1.0'
+}
+
+
+configurations {
+    mysql
+    compile { extendsFrom mysql }
+}
 

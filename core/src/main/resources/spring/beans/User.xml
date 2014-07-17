@@ -8,9 +8,4 @@
 
     <context:annotation-config />
 
-    <bean id="clientBean" class="tw.j2ee.calculator.Client">
-    </bean>
-
-    <bean id="mathCalculatorBean" class="tw.j2ee.calculator.MathCalculator"/>
-
 </beans>
