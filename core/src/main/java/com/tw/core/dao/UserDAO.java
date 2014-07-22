@@ -22,19 +22,7 @@ public class UserDAO {
         this.sessionFactory = sessionFactory;
     }
 
-//    public SessionFactory getSessionFactory() {
-//        return sessionFactory;
-//    }
-//
-//    public void setSessionFactory(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
-
     public List<User> listUser() {
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhh");
-        System.out.println(sessionFactory);
-        System.out.println(sessionFactory.getCurrentSession());
-        System.out.println("kkkkkkkkkkkkkkkkkk");
         return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }

@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class UserService {
-//    @Qualifier("userDAO")
     private UserDAO userDAO;
 
     @Autowired
