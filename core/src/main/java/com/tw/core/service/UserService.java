@@ -1,19 +1,19 @@
-package com.tw.service;
+package com.tw.core.service;
 
-import com.tw.User;
-import com.tw.dao.UserDAO;
+import com.tw.core.User;
+import com.tw.core.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by twer on 7/17/14.
  */
 @Service
+@Transactional(readOnly = true)
 public class UserService {
-
     private UserDAO userDAO;
 
     @Autowired
@@ -21,7 +21,6 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    @Transactional
     public List<User> listUser() {
         return userDAO.listUser();
     }

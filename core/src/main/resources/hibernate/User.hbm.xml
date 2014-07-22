@@ -2,20 +2,20 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping>
-    <class name="com.tw.model.User" table="user" catalog="">
-        <id name="userId" type="java.lang.Long">
-            <column name="USER_ID" />
-            <generator class="identity" />
+<hibernate-mapping default-access="field">
+    <class name="com.tw.core.User" table="USER" lazy="true" select-before-update="true">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="increment" />
         </id>
-        <property name="userName" type="string">
-            <column name="USER_NAME" length="20" not-null="true" unique="true" />
+        <property name="name" type="string">
+            <column name="NAME" not-null="true" unique="true" />
         </property>
-        <property name="userEmail" type="string">
-            <column name="USER_EMAIL" not-null="true" unique="true" />
+        <property name="email" type="string">
+            <column name="EMAIL" not-null="true" unique="true" />
         </property>
-        <property name="userAge" type="int">
-            <column name="USER_AGE" not-null="true" unique="true" />
+        <property name="age" type="int">
+            <column name="AGE" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

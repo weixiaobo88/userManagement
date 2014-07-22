@@ -30,7 +30,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 
     <servlet>
         <servlet-name>Hello</servlet-name>
-        <servlet-class>com.tw.Hello</servlet-class>
+        <servlet-class>com.tw.web.Hello</servlet-class>
     </servlet>
 
     <servlet-mapping>

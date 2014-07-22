@@ -1,9 +1,10 @@
-package com.tw.dao;
+package com.tw.core.dao;
 
-import com.tw.User;
+import com.tw.core.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,18 +12,18 @@ import java.util.List;
  * Created by twer on 7/17/14.
  */
 @Repository
-public class UserDAOImpl implements UserDAO{
+@Transactional(readOnly = true)
+public class UserDAO {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public UserDAOImpl(SessionFactory sessionFactory) {
+    public UserDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
     public List<User> listUser() {
-        return sessionFactory.getCurrentSession().createQuery("from USER")
+        return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }
 }

@@ -1,6 +1,7 @@
-package com.tw;
+package com.tw.web;
 
-import com.tw.service.UserService;
+import com.tw.core.User;
+import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,20 +25,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/list")
-    public User user(@RequestParam(value="name", required=false, defaultValue="World") String name) {
-        return new User(counter.incrementAndGet(),
-                String.format(template, name));
-    }
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public String getGreeting(@PathVariable String name) {
         String result="Hello "+name;
         return result;
     }
 
-    @RequestMapping("/index")
+    @RequestMapping("/all")
     public List<User> listUser() {
         return userService.listUser();
     }
-
 }

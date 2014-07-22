@@ -1,4 +1,4 @@
-package com.tw;
+package com.tw.web;
 
 import org.springframework.boot.SpringApplication;
 
@@ -15,7 +15,7 @@ public class Application {
 //        UserBo userBo = (UserBo)appContext.getBean("userBo");
 //
 //        User user = new User();
-//        user.setUserName("LiHao");
+//        user.setName("LiHao");
 //        userBo.save(user);
 
         SpringApplication.run(Application.class, args);

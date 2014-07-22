@@ -7,7 +7,6 @@ buildscript {
     }
 
     dependencies {
-        classpath 'mysql:mysql-connector-java:5.1.31'
         classpath 'org.flywaydb:flyway-gradle-plugin:3.0'
     }
 }
@@ -19,14 +18,20 @@ flyway {
 
 
 dependencies {
+    compile 'mysql:mysql-connector-java:5.1.31'
     compile 'org.springframework:spring-core:4.0.6.RELEASE'
     compile 'org.springframework:spring-beans:4.0.6.RELEASE'
     compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'
     compile 'org.springframework:spring-orm:4.0.6.RELEASE'
     compile 'org.springframework:spring-context:4.0.6.RELEASE'
     compile 'org.springframework:spring-context-support:4.0.6.RELEASE'
+    compile 'org.springframework:spring-tx:4.0.6.RELEASE'
     compile 'org.hibernate:hibernate-core:4.3.5.Final'
     compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    compile 'commons-codec:commons-codec:1.7'
+    runtime 'cglib:cglib:2.2.2'
+    testCompile 'org.hsqldb:hsqldb:2.2.9'
+//    compile 'org.apache.commons:commons-dbcp2:2.0'
 }
 
 
