@@ -1,1 +1,1 @@
-insert into USER (ID, NAME, EMAIL, AGE) values (1, 'Axel', 'alex@abc.com', 15);
+insert into USER (NAME, EMAIL, AGE) values ('Axel', 'alex@abc.com', 15);
