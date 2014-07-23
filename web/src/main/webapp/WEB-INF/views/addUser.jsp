@@ -4,14 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add user page</title>
+    <meta charset="utf-8">
+    <title>Add user page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css" />
 </head>
 <body>
 <h1>Add user page</h1>
 <p>Here you can add a new user.</p>
 
 <form:form method="post" commandName="user">
-<table>
+<table class="table">
 <tbody>
  <tr>
   <td>Name:</td>
