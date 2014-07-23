@@ -1,3 +1,8 @@
+/**
+ * 这里的逻辑可以有多种变换:
+ * 1. 拼字符串来添加一行,这一行里有很多变化,比如tr要不要加id,checkbox要不要加id,要不要加全局变量等等.
+ * 2. 引入view template
+ */
 $(document).ready(function(){
     $.get("/web/user/all").then(function(data){
         _(data).each(function(user){
@@ -42,3 +47,21 @@ function select_all_or_select_none(all_selector_view_element){
 
 }
 
+function delete_all_selected_users() {
+    var selected_ids =[]
+    var selected_checkbox = [];
+    $("#user-table").find("input:checked").each(function(){
+        selected_ids.push($(this).val());
+        selected_checkbox.push(this);
+    })
+
+    $(selected_checkbox).parents(".user_line").remove();
+
+
+// batch delete
+//    $.ajax({
+//        url:"/web/user/",
+//        method: "delete"
+//    }).then(function(data){
+//    })
+}
