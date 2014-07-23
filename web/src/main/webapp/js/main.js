@@ -55,7 +55,7 @@ function delete_all_selected_users() {
         selected_checkbox.push(this);
     })
 
-    $(selected_checkbox).parents(".user_line").remove();
+    $(selected_checkbox).parents(".user_line").remove();//这一行的改进不仅仅是一个简单的取巧,它是一种函数式思想的体现
 
 
 // batch delete
