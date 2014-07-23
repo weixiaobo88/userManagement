@@ -39,4 +39,11 @@ public class UserDAO {
     public void updateUser(User user) {
         sessionFactory.getCurrentSession().update(user);
     }
+
+    public void deleteUser(long id) {
+        User user = findUserById(id);
+        if (user != null) {
+            sessionFactory.getCurrentSession().delete(user);
+        }
+    }
 }

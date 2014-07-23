@@ -69,4 +69,14 @@ public class UserController {
         modelAndView.addObject("users", userService.listUser());
         return modelAndView;
     }
+
+    @RequestMapping(value = "{id}/delete", method = RequestMethod.GET)
+    public ModelAndView deleteUser(@PathVariable long id) {
+        ModelAndView modelAndView = new ModelAndView("userList");
+        userService.deleteUser(id);
+        String message = "User was successfully deleted.";
+        modelAndView.addObject("message", message);
+        modelAndView.addObject("users", userService.listUser());
+        return modelAndView;
+    }
 }
