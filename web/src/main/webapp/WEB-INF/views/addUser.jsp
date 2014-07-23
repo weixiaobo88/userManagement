@@ -27,25 +27,23 @@
     <h1>新增用户</h1>
 
     <form:form method="post" commandName="user" role="form">
-    <div class="form-group">
-      <label for="name">Name:</label>
-        <form:input path="name" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <form:input path="email" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="age">Age:</label>
-        <form:input path="age" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="新增" />
-        <a href="${pageContext.request.contextPath}/user/">返回</a>
-    </div>
-    </tbody>
-    </table>
-</form:form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <form:input path="name" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <form:input path="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <form:input path="age" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="新增" />
+            <a href="${pageContext.request.contextPath}/user/">返回</a>
+        </div>
+    </form:form>
 </div>
 
 <p></p>
