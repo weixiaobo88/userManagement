@@ -12,7 +12,6 @@ import java.util.List;
  * Created by twer on 7/17/14.
  */
 @Service
-@Transactional(readOnly = true)
 public class UserService {
     private UserDAO userDAO;
 
@@ -21,8 +20,28 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
+    @Transactional
     public List<User> listUser() {
         return userDAO.listUser();
     }
 
+    @Transactional
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
+
+    @Transactional
+    public User findUserById(long id) {
+        return userDAO.findUserById(id);
+    }
+
+    @Transactional
+    public void updateUser(User user) {
+        userDAO.updateUser(user);
+    }
+
+    @Transactional
+    public void deleteUser(long id) {
+        userDAO.deleteUser(id);
+    }
 }

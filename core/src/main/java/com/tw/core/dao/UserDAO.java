@@ -26,4 +26,24 @@ public class UserDAO {
         return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }
+
+    public void addUser(User user) {
+        sessionFactory.getCurrentSession().save(user);
+    }
+
+    public User findUserById(long id) {
+        User user = (User) sessionFactory.getCurrentSession().get(User.class, id);
+        return user;
+    }
+
+    public void updateUser(User user) {
+        sessionFactory.getCurrentSession().update(user);
+    }
+
+    public void deleteUser(long id) {
+        User user = findUserById(id);
+        if (user != null) {
+            sessionFactory.getCurrentSession().delete(user);
+        }
+    }
 }
