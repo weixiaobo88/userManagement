@@ -33,14 +33,4 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>Hello</servlet-name>
-        <servlet-class>com.tw.web.Hello</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Hello</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
 </web-app>
