@@ -70,7 +70,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("userList");
         userService.deleteUser(id);
@@ -78,5 +78,16 @@ public class UserController {
         modelAndView.addObject("message", message);
         modelAndView.addObject("users", userService.listUser());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteAll/{ids:(?:[0-9]+[,]?)+}", method = RequestMethod.GET)
+    public ModelAndView batchDeleteUser(@PathVariable long[] ids) {
+        System.out.println("---------------");
+        ModelAndView modelAndView = new ModelAndView("userList");
+        System.out.println(ids.length);
+        System.out.println("---------------");
+        userService.deleteUserList(ids);
+        modelAndView.addObject("users", userService.listUser());
+        return  modelAndView;
     }
 }

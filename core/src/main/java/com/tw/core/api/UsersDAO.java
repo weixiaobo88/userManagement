@@ -1,4 +1,4 @@
-package com.tw.core.dao;
+package com.tw.core.api;
 
 import com.tw.core.User;
 import org.hibernate.SessionFactory;
@@ -9,47 +9,41 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by twer on 7/17/14.
+ * Created by twer on 7/24/14.
  */
 @Repository
 @Transactional(readOnly = true)
-public class UserDAO {
+public class UsersDAO {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public UserDAO(SessionFactory sessionFactory) {
+    public UsersDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<User> listUser() {
+    public List<User> findAll() {
         return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }
 
-    public void addUser(User user) {
-        sessionFactory.getCurrentSession().save(user);
-    }
-
-    public User findUserById(long id) {
+    public User findOne(long id) {
         User user = (User) sessionFactory.getCurrentSession().get(User.class, id);
         return user;
     }
 
-    public void updateUser(User user) {
-        sessionFactory.getCurrentSession().update(user);
+    public void create(User user) {
+        sessionFactory.getCurrentSession().save(user);
     }
 
-    public void deleteUser(long id) {
-        User user = findUserById(id);
+    public void delete(long id) {
+        User user = findOne(id);
         if (user != null) {
             sessionFactory.getCurrentSession().delete(user);
         }
     }
 
-    public void deleteUserList(long[] ids) {
-        for (int index = 0; index < ids.length; index++) {
-            deleteUser(ids[index]);
-        }
+    public void update(User user) {
+        sessionFactory.getCurrentSession().update(user);
     }
 }
