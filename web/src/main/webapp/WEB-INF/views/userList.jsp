@@ -71,7 +71,7 @@
 <script src="../lib/js/jquery-1.11.1.min.js"></script>
 <script src="../lib/js/bootstrap.min.js"></script>
 <script src="../lib/js/underscore.min.js"></script>
-<script src="../js/select_all_users.js"></script>
+<script src="../js/jquery_webmvc/select_all_users.js"></script>
 
 
 </body>
