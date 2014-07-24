@@ -44,4 +44,8 @@ public class UserService {
     public void deleteUser(long id) {
         userDAO.deleteUser(id);
     }
+
+    public void deleteUserList(long[] ids) {
+        userDAO.deleteUserList(ids);
+    }
 }
