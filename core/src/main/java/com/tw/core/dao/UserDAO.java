@@ -46,4 +46,10 @@ public class UserDAO {
             sessionFactory.getCurrentSession().delete(user);
         }
     }
+
+    public void deleteUserList(long[] ids) {
+        for (int index = 0; index < ids.length; index++) {
+            deleteUser(ids[index]);
+        }
+    }
 }

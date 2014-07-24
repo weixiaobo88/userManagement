@@ -18,26 +18,37 @@
 
 <p>Here you can see the list of the users, edit them, remove or update.</p>
 
+
 <table class="table table-striped" border="1px" cellpadding="0" cellspacing="0" >
 <thead>
 <tr>
+<th width="10%">
+    <input type="checkbox" name="checkbox" />
+    <a href="${pageContext.request.contextPath}/user/deleteAll">Batch Delete</a>
+</th>
 <th width="10%">id</th>
 <th width="15%">name</th>
 <th width="10%">email</th>
 <th width="10%">age</th>
-<th width="10%">actions</th>
+<th width="10%" colspan="2">actions</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach var="user" items="${users}">
 <tr>
+ <td>
+    <input type="checkbox" name="userCheckbox" value ='${user.id}' />
+    <form:checkbox path="myList[${status.index}].checkControl"/>
+ </td>
  <td>${user.id}</td>
  <td>${user.name}</td>
  <td>${user.email}</td>
  <td>${user.age}</td>
  <td>
- <a href="${pageContext.request.contextPath}/user/${user.id}/edit">Edit</a>
- <a href="${pageContext.request.contextPath}/user/${user.id}/delete">Delete</a>
+    <a href="${pageContext.request.contextPath}/user/${user.id}/edit">Edit</a>
+ </td>
+ <td>
+    <a href="${pageContext.request.contextPath}/user/${user.id}/delete">Delete</a>
  </td>
 </tr>
 </c:forEach>
