@@ -39,7 +39,7 @@
 <div class="container">
     <small>${message}</small>
 
-    <table class="table table-bordered" border="1px" cellpadding="0" cellspacing="0" >
+    <table class="table table-bordered" id="user-table">
     <thead>
     <tr>
         <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
@@ -67,6 +67,12 @@
     </tbody>
     </table>
 </div>
+
+<script src="../lib/js/jquery-1.11.1.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/underscore.min.js"></script>
+<script src="../js/select_all_users.js"></script>
+
 
 </body>
 </html>
