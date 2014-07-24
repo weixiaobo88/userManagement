@@ -1,6 +1,5 @@
-package com.tw.core.api;
+package com.tw.core;
 
-import com.tw.core.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -45,5 +44,19 @@ public class UsersDAO {
 
     public void update(User user) {
         sessionFactory.getCurrentSession().update(user);
+    }
+
+    public void deleteAll(User[] userList) {
+        for (User user : userList) {
+            delete(user.getId());
+        }
+    }
+
+    public List<User> search(String keyword) {
+        String query = "FROM User WHERE name LIKE :keyword or email LIKE :keyword";
+
+        return sessionFactory.getCurrentSession().createQuery(query)
+                .setString("keyword", "%" + keyword + "%")
+                .list();
     }
 }
