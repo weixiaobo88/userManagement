@@ -62,8 +62,8 @@ public class UsersController {
 
     @RequestMapping(value = "/:batch", method = RequestMethod.DELETE )
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAll(@RequestBody User[] users) {
-        usersService.deleteAll(users);
+    public void deleteAll(@RequestBody long[] ids) {
+        usersService.deleteAll(ids);
     }
 
     @RequestMapping(value = "/:search", method = RequestMethod.GET)

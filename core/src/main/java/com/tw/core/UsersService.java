@@ -44,7 +44,7 @@ public class UsersService {
     }
 
     @Transactional
-    public void deleteAll(User[] idList) {
+    public void deleteAll(long[] idList) {
         usersDAO.deleteAll(idList);
     }
 

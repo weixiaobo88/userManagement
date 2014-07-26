@@ -46,9 +46,9 @@ public class UsersDAO {
         sessionFactory.getCurrentSession().update(user);
     }
 
-    public void deleteAll(User[] userList) {
-        for (User user : userList) {
-            delete(user.getId());
+    public void deleteAll(long[] idList) {
+        for (long id : idList) {
+            delete(id);
         }
     }
 
