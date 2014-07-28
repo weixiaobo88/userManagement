@@ -17,6 +17,13 @@ flyway {
 }
 
 
+sourceSets {
+    integrationTest {
+        java.srcDir file('src/integrationTest/java')
+        resources.srcDir file('src/integrationTest/resources')
+    }
+}
+
 dependencies {
     compile 'mysql:mysql-connector-java:5.1.31'
     compile 'org.springframework:spring-core:4.0.6.RELEASE'
@@ -31,6 +38,15 @@ dependencies {
 
     testCompile 'junit:junit:4.10'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
+
+    integrationTestCompile sourceSets.main.output
+    integrationTestCompile configurations.testCompile
+    integrationTestCompile sourceSets.test.output
+    integrationTestCompile configurations.testRuntime
 }
 
+task integrationTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath += sourceSets.integrationTest.runtimeClasspath
+}
 
