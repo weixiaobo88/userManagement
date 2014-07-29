@@ -11,7 +11,7 @@ import java.util.List;
  * Created by twer on 7/24/14.
  */
 @Repository
-@Transactional(readOnly = true)
+@Transactional
 public class UsersDAO {
 
     private SessionFactory sessionFactory;
