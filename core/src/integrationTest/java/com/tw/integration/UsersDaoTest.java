@@ -124,8 +124,9 @@ public class UsersDaoTest {
         jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 2, "Dom", "dom@abc.com", 24);
         jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 3, "David", "david@abc.com", 34);
 
-        int countOfMatchedUser = jdbcTemplate.queryForObject("select count(*) from USER where name LIKE " + "\"%abc%\"" + " or email LIKE " + "\"%abc%\"", Integer.class);
+        String keyword = "abc";
+        int countOfMatchedUser = jdbcTemplate.queryForObject("select count(*) from USER where name LIKE " + "'%" + keyword + "%'" + " or email LIKE " + "'%" + keyword + "%'", Integer.class);
 
-        assertEquals(3, countOfMatchedUser);
+        assertEquals(usersDao.search(keyword).size(), countOfMatchedUser);
     }
 }
