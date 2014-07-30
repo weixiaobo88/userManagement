@@ -1,6 +1,7 @@
 package com.tw.integration;
 
 import com.tw.core.UsersDAO;
+import com.tw.integration.fixture.SpringFixture;
 import org.junit.Before;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -30,20 +31,21 @@ public class UsersDaoTestUsingTheory {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private SpringFixture springFixture;
+
     @DataPoints
     public static String[] keywords = new String[] {"abc", "linne", "dom"};
 
     @Before
     public void setUp() throws Exception {
         new TestContextManager(getClass()).prepareTestInstance(this);
-        String cleanData= "delete from USER";
-        jdbcTemplate.update(cleanData);
+        jdbcTemplate.update("delete from USER");
 
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 1, "Linne", "linne@abc.com", 24);
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 2, "Dom", "dom@abc.com", 24);
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 3, "David", "david@abc.com", 34);
+        springFixture.insertUser(1, "Linne", "password", "linne@abc.com", 24);
+        springFixture.insertUser(2, "Dom", "password", "dom@abc.com", 24);
+        springFixture.insertUser(3, "David", "password", "david@abc.com", 34);
     }
-
 
     @Theory
     public void when_search_should_return_all_matched_users_on_email_or_name(final String keyword) {
@@ -52,6 +54,7 @@ public class UsersDaoTestUsingTheory {
         assertEquals(usersDao.search(keyword).size(), countOfMatchedUser);
     }
 
-//    search 的结果需要测试
-//    serach 的结果应该也是data
+//    search 的结果更需要测试
+
+//    serach 的结果应该也是独立的data
 }
