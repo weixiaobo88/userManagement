@@ -35,7 +35,7 @@ public class UsersDaoTest {
         String cleanData= "delete from USER";
         jdbcTemplate.update(cleanData);
 
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 1, "Linne", "linne@abc.com", 24);
+        jdbcTemplate.update("insert into USER ( ID, PASSWORD, NAME, EMAIL, AGE) values (?, ?, ?, ?, ?)", 1, "password", "Linne", "linne@abc.com", 24);
     }
 
     @Test
@@ -59,6 +59,8 @@ public class UsersDaoTest {
         String email = "dom@abc.com";
         user.setName(name);
         user.setEmail(email);
+        user.setPassword("password");
+
         user.setAge(34);
 
         int countOfUsersBeforeCreate = jdbcTemplate.queryForObject("select count(*) from USER", Integer.class);
@@ -79,6 +81,7 @@ public class UsersDaoTest {
         user.setName(name);
         user.setEmail("dom@abc.com");
         user.setAge(34);
+        user.setPassword("password");
         usersDao.create(user);
 
         int newAge = 40;
@@ -91,7 +94,7 @@ public class UsersDaoTest {
 
     @Test
     public void when_delete_should_remove_one_user() {
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 2, "Dom", "dom@abc.com", 24);
+        jdbcTemplate.update("insert into USER ( ID, NAME, PASSWORD, EMAIL, AGE) values (?, ?, ?, ?, ?)", 2, "Dom", "password", "dom@abc.com", 24);
 
         int countOfUsersBeforeDelete = jdbcTemplate.queryForObject("select count(*) from USER", Integer.class);
 
@@ -104,8 +107,8 @@ public class UsersDaoTest {
 
     @Test
     public void when_deleteAll_should_remove_all_users_in_parameters() {
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 2, "Dom", "dom@abc.com", 24);
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 3, "David", "david@abc.com", 34);
+        jdbcTemplate.update("insert into USER ( ID, NAME, PASSWORD, EMAIL, AGE) values (?, ?, ?, ?, ?)", 2, "Dom", "password", "dom@abc.com", 24);
+        jdbcTemplate.update("insert into USER ( ID, NAME, PASSWORD, EMAIL, AGE) values (?, ?, ?, ?, ?)", 3, "David", "password", "david@abc.com", 34);
         long[] ids = new long[2];
         ids[0] = 2;
         ids[1] = 3;
@@ -121,12 +124,13 @@ public class UsersDaoTest {
 
     @Test
     public void when_search_should_return_all_matched_users_on_email_or_name() {
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 2, "Dom", "dom@abc.com", 24);
-        jdbcTemplate.update("insert into USER ( ID, NAME, EMAIL, AGE) values (?, ?, ?, ?)", 3, "David", "david@abc.com", 34);
+        jdbcTemplate.update("insert into USER ( ID, NAME, PASSWORD, EMAIL, AGE) values (?, ?, ?, ?, ?)", 2, "Dom", "password", "dom@abc.com", 24);
+        jdbcTemplate.update("insert into USER ( ID, NAME, PASSWORD, EMAIL, AGE) values (?, ?, ?, ?, ?)", 3, "David", "password", "david@abc.com", 34);
 
         String keyword = "abc";
         int countOfMatchedUser = jdbcTemplate.queryForObject("select count(*) from USER where name LIKE " + "'%" + keyword + "%'" + " or email LIKE " + "'%" + keyword + "%'", Integer.class);
 
         assertEquals(usersDao.search(keyword).size(), countOfMatchedUser);
     }
+
 }
