@@ -30,6 +30,7 @@ public class PasswordService {
     }
 
     public void encryptPassword(User user) {
-        encrypt(user.getPassword());
+        user.setPassword(encrypt(user.getPassword()));
+        usersDAO.update(user);
     }
 }
