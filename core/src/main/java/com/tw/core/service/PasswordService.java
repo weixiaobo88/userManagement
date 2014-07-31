@@ -1,5 +1,6 @@
 package com.tw.core.service;
 
+import com.tw.core.User;
 import com.tw.core.UsersDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -24,12 +25,11 @@ public class PasswordService {
     }
 
     public String encrypt(String password) {
-        return encryptWithMd5(password);
-    }
-
-    private String encryptWithMd5(String password) {
         PasswordEncoder encoder = new Md5PasswordEncoder();
         return encoder.encodePassword(password, null);
     }
 
+    public void encryptPassword(User user) {
+        encrypt(user.getPassword());
+    }
 }
