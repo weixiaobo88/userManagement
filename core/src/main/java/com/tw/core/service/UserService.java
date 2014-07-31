@@ -45,7 +45,9 @@ public class UserService {
         userDAO.deleteUser(id);
     }
 
+    @Transactional
     public void deleteUserList(long[] ids) {
         userDAO.deleteUserList(ids);
     }
+
 }
