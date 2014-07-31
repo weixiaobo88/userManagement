@@ -2,6 +2,7 @@ package com.tw.web.api;
 
 import com.tw.core.User;
 import com.tw.core.UsersService;
+import com.tw.core.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +19,12 @@ import java.util.List;
 @RequestMapping("/api/v1/users")
 public class UsersController {
     private UsersService usersService;
+    private PasswordService passwordService;
 
     @Autowired
-    public UsersController(UsersService usersService) {
+    public UsersController(UsersService usersService, PasswordService passwordService) {
         this.usersService = usersService;
+        this.passwordService = passwordService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -44,6 +47,7 @@ public class UsersController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
         usersService.create(user);
+        passwordService.encryptPassword(user);
         response.setHeader("Location", request.getRequestURL().append("/").append(user.getId()).toString());
     }
 
