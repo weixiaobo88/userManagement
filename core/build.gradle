@@ -11,10 +11,21 @@ buildscript {
     }
 }
 
+//task initTestDB {
+//    flyway {
+//        url = 'jdbc:mysql://localhost:3306/user_management_test'
+//        user = "root"
+//    }
+//}
+
 flyway {
     url = 'jdbc:mysql://localhost:3306/user_management'
     user = 'root'
 }
+
+//gradle flywayMigrate -Dflyway.schemas=user_management_test -i
+//task initDevDB {
+//}
 
 
 sourceSets {
@@ -51,3 +62,6 @@ task integrationTest(type: Test) {
     classpath += sourceSets.integrationTest.runtimeClasspath
 }
 
+//gradle integrationTest flywayClean -i
+//gradle integrationTest flywayMigrate -i
+//integrationTest.dependsOn initTestDB
