@@ -1,11 +1,19 @@
-#User Managment
+#User Management
 Rest API
-    
+
+##Tech Stack
+* Spring + Hibernate + Mysql + Jetty
+* Gradle 
+ 
+
+##Done    
+* User CRUD rest api
+* Password Encrypt
+    - password encrypted by MD5
+
 
 
 ##Todo
-* Password Management
-    - password as MD5
 
 * Role Management
     - A user/role has several kinds of permissions, 
