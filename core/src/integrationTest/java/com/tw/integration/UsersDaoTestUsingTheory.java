@@ -54,7 +54,6 @@ public class UsersDaoTestUsingTheory {
         assertEquals(usersDao.search(keyword).size(), countOfMatchedUser);
     }
 
-//    search 的结果更需要测试
-
-//    serach 的结果应该也是独立的data
+//    search result need to be tested
+//    search result data should be separated
 }
