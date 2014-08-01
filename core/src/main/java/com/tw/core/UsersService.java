@@ -1,6 +1,5 @@
-package com.tw.core.api;
+package com.tw.core;
 
-import com.tw.core.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +38,18 @@ public class UsersService {
         usersDAO.delete(id);
     }
 
+    @Transactional
     public void update(User user) {
         usersDAO.update(user);
+    }
+
+    @Transactional
+    public void deleteAll(long[] idList) {
+        usersDAO.deleteAll(idList);
+    }
+
+    @Transactional
+    public List<User> search(String keyword) {
+        return usersDAO.search(keyword);
     }
 }

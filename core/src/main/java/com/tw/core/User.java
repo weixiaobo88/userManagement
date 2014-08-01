@@ -16,6 +16,9 @@ public class User {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "PASSWORD")
+    private String password;
+
     @Column(name = "EMAIL")
     private String email;
 
@@ -55,5 +58,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

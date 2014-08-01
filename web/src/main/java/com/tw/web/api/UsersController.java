@@ -1,7 +1,8 @@
-package com.tw.web;
+package com.tw.web.api;
 
 import com.tw.core.User;
-import com.tw.core.api.UsersService;
+import com.tw.core.UsersService;
+import com.tw.core.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,15 @@ import java.util.List;
  * Created by twer on 7/24/14.
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 public class UsersController {
     private UsersService usersService;
+    private PasswordService passwordService;
 
     @Autowired
-    public UsersController(UsersService usersService) {
+    public UsersController(UsersService usersService, PasswordService passwordService) {
         this.usersService = usersService;
+        this.passwordService = passwordService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -44,6 +47,7 @@ public class UsersController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
         usersService.create(user);
+        passwordService.encryptPassword(user);
         response.setHeader("Location", request.getRequestURL().append("/").append(user.getId()).toString());
     }
 
@@ -58,6 +62,17 @@ public class UsersController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("userId") long id) {
         usersService.delete(id);
+    }
+
+    @RequestMapping(value = "/:batch", method = RequestMethod.DELETE )
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAll(@RequestBody long[] ids) {
+        usersService.deleteAll(ids);
+    }
+
+    @RequestMapping(value = "/:search", method = RequestMethod.GET)
+    public List<User> search( @RequestParam(value = "keyword") String keyword) {
+        return usersService.search(keyword);
     }
 
 }

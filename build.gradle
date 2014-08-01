@@ -17,6 +17,9 @@ subprojects {
     }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
 
 //gradle任务练习
 //mysql -Duser_management -uroot < core/src/main/resources/db/seed/init-user.sql

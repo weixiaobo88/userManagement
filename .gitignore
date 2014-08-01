@@ -2,7 +2,6 @@
 .gradle/
 build/
 out/
-gradle/
 *.bat
 *.iml
 *.ipr
