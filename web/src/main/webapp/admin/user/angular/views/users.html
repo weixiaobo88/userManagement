@@ -13,12 +13,12 @@
 <div class="container">
     <div class="form-group input-group ">
         <button type="button" class="btn btn-primary btn ">添加用户</button>
-        <button type="button" class="btn btn-default btn " onclick="delete_all_selected_users()">批量删除</button>
+        <button type="button" class="btn btn-default btn " ng-click="delete_all_selected_users()">批量删除</button>
     </div>
     <div class="form-group input-group ">
         <input type="search" class="form-control" />
         <span class="input-group-btn ">
-            <button class="btn btn-default" type="button">Search</button>
+            <button class="btn btn-default" type="button" >Search</button>
         </span>
     </div>
 </div>
@@ -38,13 +38,13 @@
         </thead>
         <tbody>
             <tr class="user_line" ng-repeat="user in users">
-                <td><input type="checkbox" name="selected_user_id" value=""/></td>
+                <td><input type="checkbox" checklist-model="selected_users" checklist-value="user.id"/></td>
                 <td> {{user.id}}</td>
                 <td> {{user.name}} </td>
                 <td> {{user.email}} </td>
                 <td> {{user.age}} </td>
                 <td>
-                    <button class="btn">删除 </button>
+                    <button class="btn" ng-click="deleteUser(user.id)">删除 </button>
                 </td>
             </tr>
         </tbody>

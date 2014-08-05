@@ -11,7 +11,8 @@
 angular
     .module('userManagement', [
         'ngResource',
-        'ngRoute'
+        'ngRoute',
+        'checklist-model'
     ])
     .config(function ($routeProvider) {
         $routeProvider
