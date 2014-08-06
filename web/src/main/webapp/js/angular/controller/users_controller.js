@@ -12,7 +12,6 @@ angular.module('userManagement')
 
         var User = $resource("/web/api/v1/users/:userId");
         $scope.users = User.query();
-        $scope.selected_users =[];
 
         $scope.deleteUser = function(userId){
             User.delete({userId:userId}, function(){
@@ -21,14 +20,14 @@ angular.module('userManagement')
         };
 
         $scope.delete_all_selected_users = function(){
+            var selected_users = _.chain($scope.users).where({selected:true}).pluck('id').value();
             $http.delete("/web/api/v1/users/:batch", {
-                data:$scope.selected_users,
+                data:selected_users,
                 headers:{'Content-Type':'application/json'}
             }).success(function(){
-                _($scope.selected_users).each(function(userId){
+                _(selected_users).each(function(userId){
                     clear_user_in_scope(userId);
                 });
-                $scope.selected_users = [];
             });
         };
 
@@ -37,6 +36,19 @@ angular.module('userManagement')
                 return user.id == userId;
             });
         };
+
+        $scope.selectedAll = false;
+
+        $scope.select_all_or_select_none = function(){
+            if ($scope.selectedAll) {
+                $scope.selectedAll = true;
+            } else {
+                $scope.selectedAll = false;
+            }
+            _($scope.users).each(function (user) {
+                user.selected = $scope.selectedAll;
+            });
+        }
 
 
     });
