@@ -1,5 +1,5 @@
-#User Management
-Rest API
+userManagement
+==============
 
 ##教学内容
 教学的内容以软件开发为主线，主要涉及的内容和辅助工具有：
@@ -52,21 +52,14 @@ Rest API
 - 使用Go/Jenkins创建Pipeline，搭建持续集成的环境
 
 
- 
 
-##Done    
-* User CRUD rest api
-* Password Encrypt
-    - password encrypted by MD5
 
 
 ##Todo
 
 * Role Management
-    - A user/role has several kinds of permissions, 
-    - One kind of permission has several resources(URLs)
-    - A user can be assigned several roles which have related permissions
-
-
+  - A user/role has several kinds of permissions, 
+  - One kind of permission has several resources(URLs)
+  - A user can be assigned several roles which have related permissions
 
 
