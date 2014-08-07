@@ -1,0 +1,33 @@
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">管理界面</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">用户管理</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form role="form">
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" placeholder="Enter email" ng-model="user.email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+        </div>
+        <div class="form-group">
+            <label>User name</label>
+            <input type="text" class="form-control" placeholder="User name" ng-model="user.name">
+        </div>
+        <div class="form-group">
+            <label>User age</label>
+            <input type="number" class="form-control" placeholder="User age" ng-model="user.age">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="create()">Submit</button>
+    </form>
+</div>

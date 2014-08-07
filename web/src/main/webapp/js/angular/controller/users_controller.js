@@ -8,7 +8,7 @@
  * Controller of the partyBidApp
  */
 angular.module('userManagement')
-    .controller('UsersController', function ($scope, $resource,$http) {
+    .controller('UsersController', function ($scope, $location, $resource,$http) {
 
         var User = $resource("/web/api/v1/users/:userId");
         $scope.users = User.query();
@@ -50,5 +50,8 @@ angular.module('userManagement')
             });
         }
 
+        $scope.go_to_create_user = function(){
+            $location.path("/new");
+        }
 
     });
