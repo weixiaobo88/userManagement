@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../../lib/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">管理界面</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">用户管理</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group input-group ">
+        <button type="button" class="btn btn-primary btn ">添加用户</button>
+        <button type="button" class="btn btn-default btn " onclick="delete_all_selected_users()">批量删除</button>
+    </div>
+    <div class="form-group input-group ">
+        <input type="search" class="form-control" />
+        <span class="input-group-btn ">
+            <button class="btn btn-default" type="button">Search</button>
+        </span>
+    </div>
+</div>
+
+<div class="container">
+
+    <table id="user-table" class="table table-bordered">
+        <thead>
+            <tr>
+                <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>Email</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+</div>
+
+
+
+
+<script src="../../../lib/js/jquery-1.11.1.min.js"></script>
+<script src="../../../lib/js/bootstrap.min.js"></script>
+<script src="../../../lib/js/underscore.min.js"></script>
+
+<script src="../../../js/jquery_ajax_no_template_one_page_application/main.js"></script>
+<script src="../../../js/jquery_webmvc/select_all_users.js"></script>
+
+</body>
+</html>
